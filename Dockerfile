@@ -1,13 +1,14 @@
-# Use Python image
 FROM python:3.9-slim
-
 
 WORKDIR /app
 
-COPY requirements.txt
+# copy requirements.txt into /app
+COPY requirements.txt /app/
+
+# install dependencies
 RUN pip install -r requirements.txt
 
+# copy the rest of the code
+COPY . /app
 
-COPY..
-
-cmd ["python","app.py"]
+CMD ["python", "app.py"]
